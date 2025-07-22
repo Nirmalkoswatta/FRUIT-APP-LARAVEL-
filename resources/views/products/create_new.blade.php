@@ -36,19 +36,19 @@
 
             <!-- Error Messages -->
             @if($errors->any())
-                <div class="mb-6 bg-red-50 border-l-4 border-red-500 p-4 rounded-lg animate-slide-down">
-                    <div class="flex items-center mb-2">
-                        <svg class="w-5 h-5 text-red-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path>
-                        </svg>
-                        <h3 class="text-red-800 font-semibold">Please fix the following errors:</h3>
-                    </div>
-                    <ul class="text-red-700 list-disc list-inside space-y-1">
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
+            <div class="mb-6 bg-red-50 border-l-4 border-red-500 p-4 rounded-lg animate-slide-down">
+                <div class="flex items-center mb-2">
+                    <svg class="w-5 h-5 text-red-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path>
+                    </svg>
+                    <h3 class="text-red-800 font-semibold">Please fix the following errors:</h3>
                 </div>
+                <ul class="text-red-700 list-disc list-inside space-y-1">
+                    @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
             @endif
 
             <!-- Create Product Form -->
@@ -61,21 +61,21 @@
 
                     <form method="POST" action="{{ route('product.store') }}" class="space-y-6">
                         @csrf
-                        
+
                         <!-- Product Name -->
                         <div class="form-group">
                             <label for="name" class="block text-sm font-semibold text-gray-700 mb-2">
                                 Product Name <span class="text-red-500">*</span>
                             </label>
-                            <input type="text" 
-                                   id="name" 
-                                   name="name" 
-                                   value="{{ old('name') }}"
-                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 @error('name') border-red-500 @enderror"
-                                   placeholder="Enter product name"
-                                   required>
+                            <input type="text"
+                                id="name"
+                                name="name"
+                                value="{{ old('name') }}"
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 @error('name') border-red-500 @enderror"
+                                placeholder="Enter product name"
+                                required>
                             @error('name')
-                                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                             @enderror
                         </div>
 
@@ -86,16 +86,16 @@
                                 <label for="qty" class="block text-sm font-semibold text-gray-700 mb-2">
                                     Quantity <span class="text-red-500">*</span>
                                 </label>
-                                <input type="number" 
-                                       id="qty" 
-                                       name="qty" 
-                                       value="{{ old('qty') }}"
-                                       min="1"
-                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 @error('qty') border-red-500 @enderror"
-                                       placeholder="Enter quantity"
-                                       required>
+                                <input type="number"
+                                    id="qty"
+                                    name="qty"
+                                    value="{{ old('qty') }}"
+                                    min="1"
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 @error('qty') border-red-500 @enderror"
+                                    placeholder="Enter quantity"
+                                    required>
                                 @error('qty')
-                                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                                 @enderror
                             </div>
 
@@ -106,18 +106,18 @@
                                 </label>
                                 <div class="relative">
                                     <span class="absolute left-3 top-3 text-gray-500 font-semibold">$</span>
-                                    <input type="number" 
-                                           id="price" 
-                                           name="price" 
-                                           value="{{ old('price') }}"
-                                           step="0.01"
-                                           min="0"
-                                           class="w-full pl-8 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 @error('price') border-red-500 @enderror"
-                                           placeholder="0.00"
-                                           required>
+                                    <input type="number"
+                                        id="price"
+                                        name="price"
+                                        value="{{ old('price') }}"
+                                        step="0.01"
+                                        min="0"
+                                        class="w-full pl-8 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 @error('price') border-red-500 @enderror"
+                                        placeholder="0.00"
+                                        required>
                                 </div>
                                 @error('price')
-                                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                                 @enderror
                             </div>
                         </div>
@@ -127,13 +127,13 @@
                             <label for="description" class="block text-sm font-semibold text-gray-700 mb-2">
                                 Description
                             </label>
-                            <textarea id="description" 
-                                      name="description" 
-                                      rows="4"
-                                      class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 @error('description') border-red-500 @enderror"
-                                      placeholder="Enter product description (optional)">{{ old('description') }}</textarea>
+                            <textarea id="description"
+                                name="description"
+                                rows="4"
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 @error('description') border-red-500 @enderror"
+                                placeholder="Enter product description (optional)">{{ old('description') }}</textarea>
                             @error('description')
-                                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                             @enderror
                         </div>
 
@@ -161,6 +161,7 @@
                 opacity: 0;
                 transform: translateY(-20px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -172,6 +173,7 @@
                 opacity: 0;
                 transform: translateY(50px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -183,6 +185,7 @@
                 opacity: 0;
                 transform: translateY(-20px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -211,9 +214,20 @@
             animation: fade-in 0.6s ease-out;
         }
 
-        .form-group:nth-child(1) { animation-delay: 0.1s; }
-        .form-group:nth-child(2) { animation-delay: 0.2s; }
-        .form-group:nth-child(3) { animation-delay: 0.3s; }
-        .form-group:nth-child(4) { animation-delay: 0.4s; }
+        .form-group:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .form-group:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .form-group:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .form-group:nth-child(4) {
+            animation-delay: 0.4s;
+        }
     </style>
 </x-app-layout>
